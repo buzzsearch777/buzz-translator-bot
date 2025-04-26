@@ -1,5 +1,5 @@
 import tweepy
-from openai import OpenAI
+import openai
 
 # Twitter API認証情報
 API_KEY = "zsbLZ4etWifwmQKT4spK3Rfjq"
@@ -7,10 +7,10 @@ API_SECRET = "Dqj5kAW4qgEjWcHG8HZg3d4KA5aqLEgPYPQb9w3oEDgW1XEf7C"
 ACCESS_TOKEN = "1915735394819428352-P4rQxI4FUcR8Havt4Wovea6JATwhex"
 ACCESS_SECRET = "Yn5cFB0hxWoWRZEvY0tqjBFcAmdTfziLOsJ1DD9B8HdnF"
 
-# OpenAIのクライアント設定（ここがポイント）
-openai_client = OpenAI(
-    api_key="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"
-)
+# OpenAI API認証情報
+openai.api_key = "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"
+openai.organization = "org-rPcV99pmwk39M3t4TTArjtkf"
+openai.project = "proj_nJFkdxEwnrfmQxfbB3magVC8"
 
 # 認証
 auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET, ACCESS_TOKEN, ACCESS_SECRET)
@@ -20,8 +20,8 @@ api = tweepy.API(auth)
 def translate_to_japanese(text):
     try:
         print("翻訳リクエスト送信中...")
-        response = openai_client.chat.completions.create(
-            model="gpt-3.5-turbo",
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": "あなたは優秀な日本語翻訳者です。自然で面白く翻訳してください。"},
                 {"role": "user", "content": f"以下の英語ツイートを日本語に翻訳してください：\n{text}"}
