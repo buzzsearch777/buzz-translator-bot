@@ -12,7 +12,7 @@ openai.api_key = "sk-proj-ne5cTGy9DORxqfiB4mXCffYr8J-G6BLfmkgit5xzFLc-c2Z6POt-B-
 openai.organization = "org-rPcV99pmwk39M3t4TTArjtkf"
 openai.project = "proj_nJFkdxEwnrfmQxfbB3magVC8"
 
-# 認証
+# Twitter API 認証
 auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET, ACCESS_TOKEN, ACCESS_SECRET)
 api = tweepy.API(auth)
 
@@ -20,7 +20,7 @@ api = tweepy.API(auth)
 def translate_to_japanese(text):
     try:
         print("翻訳リクエスト送信中...")
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": "あなたは優秀な日本語翻訳者です。自然で面白く翻訳してください。"},
@@ -32,7 +32,7 @@ def translate_to_japanese(text):
         print("翻訳エラー:", e)
         return None
 
-# テスト用のバズ投稿（手動指定）
+# テスト用のバズ投稿
 original_text = "This cat completely lost its mind 😂"
 original_url = "https://twitter.com/TheFigen_/status/1779880272713456091"
 
