@@ -7,12 +7,12 @@ API_SECRET = "Dqj5kAW4qgEjWcHG8HZg3d4KA5aqLEgPYPQb9w3oEDgW1XEf7C"
 ACCESS_TOKEN = "1915735394819428352-P4rQxI4FUcR8Havt4Wovea6JATwhex"
 ACCESS_SECRET = "Yn5cFB0hxWoWRZEvY0tqjBFcAmdTfziLOsJ1DD9B8HdnF"
 
-# OpenAI API認証
+# OpenAIのクライアント設定（ここがポイント）
 openai_client = OpenAI(
-    api_key="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"
+    api_key="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"
 )
 
-# Twitter認証
+# 認証
 auth = tweepy.OAuth1UserHandler(API_KEY, API_SECRET, ACCESS_TOKEN, ACCESS_SECRET)
 api = tweepy.API(auth)
 
